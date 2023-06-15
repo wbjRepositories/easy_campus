@@ -14,9 +14,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
     @Override
-    public R<User> login(String username, String password) {
-        log.info("用户尝试登录，用户名：{} 密码：{}",username,password);
-        User user = userMapper.selectOneByLoginInfo(username, password);
+    public R<User> login(String username, String password,int role) {
+        log.info("用户尝试登录，用户名：{} 密码：{} 角色：{}",username,password,role);
+        User user = userMapper.selectOneByLoginInfo(username, password,role);
         if (user == null) {
             log.info("用户登录失败，用户名：{} 密码：{}",username,password);
             return R.fail("用户名或密码错误!");

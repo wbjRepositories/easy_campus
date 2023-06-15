@@ -54,6 +54,10 @@ public class User {
      */
     private String num;
     /**
+     * 学生：num  老师：phone
+     */
+    private String username;
+    /**
      * 密码;默认是学号后六位
      */
     private String password;

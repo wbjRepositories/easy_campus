@@ -13,4 +13,11 @@ spring:
     url: jdbc:mysql://localhost:3306/easy_campus
     username: root
     password: root
+logging:
+  level:
+    root: info
 
+mybatis:
+  type-aliases-package: com.wbj.pojo
+  configuration:
+    map-underscore-to-camel-case: true
