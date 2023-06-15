@@ -1,2 +1,4 @@
-package com.wbj.mapper;public interface OrderMapper {
+package com.wbj.mapper;
+
+public interface OrderMapper {
 }
