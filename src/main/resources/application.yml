@@ -21,3 +21,4 @@ mybatis:
   type-aliases-package: com.wbj.pojo
   configuration:
     map-underscore-to-camel-case: true
+

@@ -1,8 +1,11 @@
 package com.wbj.pojo;
 
+import lombok.Data;
+
 /**
  * businessman，商户表
  */
+@Data
 public class Businessman {
     /**
      * 头像

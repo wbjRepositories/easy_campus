@@ -33,11 +33,9 @@ public class UserController {
                     .compact();
             response.addHeader("token", token);
         }
-
-        System.out.println(new Date(System.currentTimeMillis() + 3 * 24 * 3600 * 1000));
-        System.out.println(new Date(System.currentTimeMillis()));
-
-
         return login;
     }
+
+
+
 }
