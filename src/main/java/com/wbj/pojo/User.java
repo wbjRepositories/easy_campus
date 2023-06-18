@@ -28,7 +28,7 @@ public class User {
     /**
      * 班级id
      */
-    private String classid;
+    private int classId;
     /**
      * 创建时间
      */

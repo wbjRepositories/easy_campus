@@ -12,7 +12,7 @@ public class Dish {
     /**
      * 商户id
      */
-    private String businessman;
+    private String businessmanId;
     /**
      * 菜品id
      */

@@ -1,6 +1,7 @@
 package com.wbj.controller;
 
 import com.wbj.common.R;
+import com.wbj.pojo.Class;
 import com.wbj.pojo.User;
 import com.wbj.service.UserService;
 import io.jsonwebtoken.Jwts;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -19,6 +21,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    /**
+     * 登录
+     * @param response
+     * @param role      判断登录角色
+     * @param user
+     * @return
+     */
     @PostMapping("login/{role}")
     public R<User> login(HttpServletResponse response, @PathVariable int role, @RequestBody User user) {
         R<User> login = userService.login(user.getUsername(), user.getPassword(), role);
@@ -36,6 +45,22 @@ public class UserController {
         return login;
     }
 
+    /**
+     * 更改用户个人信息
+     * @param user  只需提供id,name,gender,classId,phone,address,birthday
+     * @return
+     */
+    @PutMapping
+    public R<Integer> setUserInfo(@RequestBody User user){
+        return userService.setUserInfo(user);
+    }
 
-
+    /**
+     * 获取所有班级信息
+     * @return
+     */
+    @GetMapping("classes")
+    public R<ArrayList<Class>> getAllClass(){
+        return userService.getAllClass();
+    }
 }

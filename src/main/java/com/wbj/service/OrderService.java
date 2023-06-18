@@ -4,8 +4,12 @@ import com.wbj.common.R;
 import com.wbj.pojo.Businessman;
 import com.wbj.pojo.Dish;
 
-public interface OrderService {
-    R<Businessman> getBusinessmanByPage(int currentPage, int pageSize);
+import java.util.ArrayList;
 
-    R<Dish> getDishByPage(int businessmanId,int currentPage, int pageSize);
+public interface OrderService {
+    R<ArrayList<Businessman>> getBusinessmanByPage(int currentPage, int pageSize);
+
+    R<ArrayList<Dish>> getDishByPage(int businessmanId, int currentPage, int pageSize);
+
+    R<Integer> getDishCount(int businessmanId);
 }

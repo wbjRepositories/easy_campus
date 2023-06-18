@@ -19,7 +19,7 @@ public class R<T> {
         Data = data;
     }
     //操作成功，并返回数据
-    public static<V> R success(V data,String msg){
+    public static<V> R<V> success(V data,String msg){
         return new R<>(1,msg,data);
     }
     //操作成功

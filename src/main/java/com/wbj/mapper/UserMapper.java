@@ -1,13 +1,21 @@
 package com.wbj.mapper;
 
 
+import com.wbj.pojo.Class;
 import com.wbj.pojo.User;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.ArrayList;
+
 public interface UserMapper {
     //用户登录
-    @Select("select id,num,username,name,gender,class_id,phone,address,birthday,create_time,state,is_job,businessman_id,role" +
-            " from user where username = #{username} and password = #{password} and role = #{role}")
     User selectOneByLoginInfo(@Param("username") String username, @Param("password") String password,@Param("role") int role);
+
+    //更改用户的name,gender,classId,phone,address,birthday
+    Integer updateUserInfo(User user);
+
+    //查询所有班级
+    @Select("select * from class")
+    ArrayList<Class> selectAllClass();
 }

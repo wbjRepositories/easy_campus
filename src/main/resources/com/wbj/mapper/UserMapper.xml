@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wbj.mapper.UserMapper">
+    <select id="selectOneByLoginInfo" resultType="user">
+        select id,num,username,name,gender,class_id,phone,address,birthday,create_time,state,is_job,businessman_id,role
+        from user
+        where username = #{username} and password = #{password} and role = #{role}
+    </select>
+
+    <update id="updateUserInfo">
+        update user set
+        name = #{name},gender=#{gender},class_id=#{classId},phone=#{phone},address=#{address},birthday=#{birthday}
+        where id = #{id}
+    </update>
+
+</mapper>

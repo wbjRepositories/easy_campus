@@ -17,7 +17,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderMapper orderMapper;
     @Override
-    public R<Businessman> getBusinessmanByPage(int currentPage, int pageSize) {
+    public R<ArrayList<Businessman>> getBusinessmanByPage(int currentPage, int pageSize) {
         log.info("分页查询商户，当前页码：{} 每页数：{}",currentPage,pageSize);
         if (currentPage<0||pageSize<0){
             return R.fail("数据格式有误！");
@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public R<Dish> getDishByPage(int businessmanId,int currentPage, int pageSize) {
+    public R<ArrayList<Dish>> getDishByPage(int businessmanId,int currentPage, int pageSize) {
         log.info("分页查询菜品，商户id：{}  当前页码：{} 每页数：{}",businessmanId,currentPage,pageSize);
         if (currentPage<0||pageSize<0){
             return R.fail("数据格式有误！");
@@ -34,4 +34,11 @@ public class OrderServiceImpl implements OrderService {
         ArrayList<Dish> dishes = orderMapper.selectDishByPage(businessmanId, currentPage, pageSize);
         return R.success(dishes,"查询菜品成功！");
     }
+
+    @Override
+    public R<Integer> getDishCount(int businessmanId) {
+        log.info("查询当前商户的菜品数，当前商户id：{}",businessmanId);
+        return R.success(orderMapper.selectDishCount(businessmanId),"查询菜品数成功！");
+    }
+
 }
