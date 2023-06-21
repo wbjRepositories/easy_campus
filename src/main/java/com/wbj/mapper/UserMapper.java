@@ -12,6 +12,12 @@ public interface UserMapper {
     //用户登录
     User selectOneByLoginInfo(@Param("username") String username, @Param("password") String password,@Param("role") int role);
 
+
+    //查询用户个人信息
+    @Select("select * from user where id = #{userId}")
+    User selectOneUser(int userId);
+
+
     //更改用户的name,gender,classId,phone,address,birthday
     Integer updateUserInfo(User user);
 

@@ -11,5 +11,12 @@ public interface UserService {
 
     R<Integer> setUserInfo(User user);
 
+    /**
+     * 通过用户id获取用户信息
+     * @param userId
+     * @return
+     */
+    R<User> getUserInfo(int userId);
+
     R<ArrayList<Class>> getAllClass();
 }

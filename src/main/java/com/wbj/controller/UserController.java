@@ -1,17 +1,15 @@
 package com.wbj.controller;
 
+import com.wbj.Utils.TokenUtils;
 import com.wbj.common.R;
 import com.wbj.pojo.Class;
 import com.wbj.pojo.User;
 import com.wbj.service.UserService;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 @RestController
@@ -35,15 +33,23 @@ public class UserController {
             HashMap<String, Object> claims = new HashMap<>();
             claims.put("id", login.getData().getId() + "");
             claims.put("username", login.getData().getUsername());
-            String token = Jwts.builder()
-                    .setClaims(claims)
-                    .signWith(SignatureAlgorithm.HS256, "easy_campus")
-                    .setExpiration(new Date(System.currentTimeMillis() + 3 * 24 * 3600 * 1000))
-                    .compact();
+            //生成token
+            String token = TokenUtils.createToken(claims);
             response.addHeader("token", token);
         }
         return login;
     }
+
+    /**
+     * 根据用户id获取用户信息
+     * @param userId
+     * @return
+     */
+    @GetMapping("/{userId}")
+    public R<User> getUserInfo(@PathVariable int userId){
+        return userService.getUserInfo(userId);
+    }
+
 
     /**
      * 更改用户个人信息

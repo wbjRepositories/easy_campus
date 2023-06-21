@@ -1,5 +1,6 @@
 package com.wbj.common;
 
+import com.wbj.Utils.TokenUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        String token = request.getHeader("token");
+        TokenUtils.parseToken(token);
         System.out.println("拦截器测试。。。。。。。。。。");
         return true;
     }

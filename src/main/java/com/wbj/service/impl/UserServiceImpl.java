@@ -27,6 +27,16 @@ public class UserServiceImpl implements UserService {
         return R.success(user,"登录成功！");
     }
 
+    public R<User> getUserInfo(int userId){
+        log.info("查询用户信息，id:{}",userId);
+        User user = userMapper.selectOneUser(userId);
+        //判断是否查询到用户
+        if (user == null){
+            return R.fail("没有这个用户！");
+        }
+        return R.success(user,"获取用户信息成功！");
+    }
+
     @Override
     public R<Integer> setUserInfo(User user) {
         log.info("修改用户信息为：{}",user);
