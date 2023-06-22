@@ -29,6 +29,7 @@ public class UserController {
     @PostMapping("login/{role}")
     public R<User> login(HttpServletResponse response, @PathVariable int role, @RequestBody User user) {
         R<User> login = userService.login(user.getUsername(), user.getPassword(), role);
+        //判断是否查询到了用户数据
         if (login.getCode() == 1) {
             HashMap<String, Object> claims = new HashMap<>();
             claims.put("id", login.getData().getId() + "");

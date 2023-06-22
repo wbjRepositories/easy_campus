@@ -14,7 +14,7 @@ public interface OrderMapper {
      * @param offset 偏移量
      * @return
      */
-    ArrayList<Businessman> selectBusinessmanByPage(@Param("index") int index,@Param("offset") int offset);
+    ArrayList<Businessman> selectBusinessmenByPage(@Param("index") int index, @Param("offset") int offset);
 
     /**
      * 通过分页的方式查询菜品
@@ -32,4 +32,7 @@ public interface OrderMapper {
      */
     @Select("select count(*) from user where businessman_id = #{businessmanId}")
     Integer selectDishCount(int businessmanId);
+
+
+//    ArrayList<Businessman> selectBusinessmenBy
 }

@@ -22,7 +22,7 @@ public class OrderServiceImpl implements OrderService {
         if (currentPage<0||pageSize<0){
             return R.fail("数据格式有误！");
         }
-        return R.success(orderMapper.selectBusinessmanByPage((currentPage-1)*pageSize,pageSize),"分页查询商户成功！");
+        return R.success(orderMapper.selectBusinessmenByPage((currentPage-1)*pageSize,pageSize),"分页查询商户成功！");
     }
 
     @Override
