@@ -1,5 +1,6 @@
 package com.wbj.common;
 
+import io.jsonwebtoken.MalformedJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-    @ExceptionHandler(IllegalArgumentException.class)
+    @ExceptionHandler({IllegalArgumentException.class, MalformedJwtException.class})
     public R jwtException(Exception e){
         log.warn("非法参数异常：{}",e.toString()+":"+e.getMessage());
         return R.fail("jwt验证失败！");

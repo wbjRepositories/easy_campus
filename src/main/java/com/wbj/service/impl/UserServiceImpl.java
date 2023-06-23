@@ -15,7 +15,7 @@ import java.util.ArrayList;
 @Slf4j
 public class UserServiceImpl implements UserService {
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
     @Override
     public R<User> login(String username, String password,int role) {
         log.info("用户尝试登录，用户名：{} 密码：{} 角色：{}",username,password,role);
@@ -43,11 +43,7 @@ public class UserServiceImpl implements UserService {
         return R.success(userMapper.updateUserInfo(user),"修改用户信息成功！");
     }
 
-    @Override
-    public R<ArrayList<Class>> getAllClass() {
-        log.info("查询所有班级信息");
-        return R.success(userMapper.selectAllClass(),"查询班级成功！");
-    }
+
 
 
 }

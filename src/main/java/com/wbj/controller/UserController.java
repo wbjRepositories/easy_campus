@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     /**
      * 登录
@@ -62,12 +62,5 @@ public class UserController {
         return userService.setUserInfo(user);
     }
 
-    /**
-     * 获取所有班级信息
-     * @return
-     */
-    @GetMapping("classes")
-    public R<ArrayList<Class>> getAllClass(){
-        return userService.getAllClass();
-    }
+
 }

@@ -21,7 +21,5 @@ public interface UserMapper {
     //更改用户的name,gender,classId,phone,address,birthday
     Integer updateUserInfo(User user);
 
-    //查询所有班级
-    @Select("select * from class")
-    ArrayList<Class> selectAllClass();
+
 }

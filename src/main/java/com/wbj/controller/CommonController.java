@@ -2,6 +2,7 @@ package com.wbj.controller;
 
 import com.wbj.common.R;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +29,7 @@ public class CommonController {
      * @throws IOException
      */
     @GetMapping("image/{name}")
-    public void getImage(@PathVariable String name, HttpServletResponse response) throws IOException {
+    public void download(@PathVariable String name, HttpServletResponse response) throws IOException {
         log.info("查询图片资源，路径：{}",basePath+name);
         FileInputStream fileInputStream = new FileInputStream(basePath+name);
         ServletOutputStream outputStream = response.getOutputStream();
@@ -43,7 +44,7 @@ public class CommonController {
     }
 
     @PostMapping("upload")
-    public R<String> setImage(MultipartFile file) throws IOException {
+    public R<String> upload(MultipartFile file) throws IOException {
         if (file == null){
             return R.fail("不能传null值！");
         }

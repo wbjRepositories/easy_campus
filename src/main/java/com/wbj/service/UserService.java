@@ -18,5 +18,5 @@ public interface UserService {
      */
     R<User> getUserInfo(int userId);
 
-    R<ArrayList<Class>> getAllClass();
+
 }
