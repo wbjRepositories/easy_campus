@@ -8,6 +8,14 @@
         from dish where businessman_id=#{businessmanId} limit #{index},#{offset}
     </select>
 
+    <delete id="deleteMultiple">
+        delete from dish
+        where businessman_id = #{businessmanId}
+        and id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
 
     <update id="updateDish">
         update dish set
@@ -15,4 +23,9 @@
         ,update_time=#{dish.updateTime}
         where businessman_id=#{currentId} and id=#{dish.id}
     </update>
+
+    <insert id="insertDish" useGeneratedKeys="true" keyProperty="dish.id">
+        insert into dish(name,price,is_preferential,weight,businessman_id,update_time,image)
+        value(#{dish.name},#{dish.price},#{dish.isPreferential},#{dish.weight},#{currentId},#{dish.updateTime},#{dish.image})
+    </insert>
 </mapper>

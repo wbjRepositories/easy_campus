@@ -14,5 +14,9 @@ public interface DishService {
 
     R removeDish(int businessmanId,int dishId);
 
+    R removeMultiple(int businessmanId,int ...dis);
+
     R updateDish(int currentId,Dish dish);
+
+    R addDish(int currentId,Dish dish);
 }

@@ -46,14 +46,43 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
+    public R removeMultiple(int businessmanId, int... dis) {
+        log.info("批量删除菜品，当前商户id：{}  菜品id：{}",businessmanId,dis);
+        int flag = dishMapper.deleteMultiple(businessmanId, dis);
+        if (flag<1){
+            return R.fail("删除失败！");
+        }
+        return R.success("删除成功！");
+    }
+
+    @Override
     public R updateDish(int currentId, Dish dish) {
         log.info("更新菜品，当前商户id：{}  菜品信息：{}",currentId,dish);
+        Long isPreferential = dish.getIsPreferential();
+        if (isPreferential != 1 && isPreferential != 0) {
+            return R.fail("数据有误！");
+        }
         int flag = dishMapper.updateDish(currentId, dish);
         if (flag >=1){
             return R.success("更新菜品成功！");
         }else {
             return R.fail("更新菜品失败！");
         }
+    }
+
+    @Override
+    public R addDish(int currentId, Dish dish) {
+        log.info("新增菜品，当前商户id：{}  菜品信息：{}",currentId,dish);
+        System.out.println(dish.getId());
+        Long isPreferential = dish.getIsPreferential();
+        System.out.println(isPreferential);
+        //限制添加的is_preferential只能是1或者0
+        if (isPreferential != 1 && isPreferential != 0) {
+            return R.fail("数据有误！");
+        }
+        dishMapper.insertDish(currentId, dish);
+        System.out.println(dish.getId());
+        return R.success(dish.getId(),"新增菜品成功");
     }
 
 }

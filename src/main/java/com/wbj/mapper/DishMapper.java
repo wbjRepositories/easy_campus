@@ -36,6 +36,13 @@ public interface DishMapper {
     @Delete("delete from dish where businessman_id = #{businessmanId} and id = #{dishId}")
     int deleteOne(@Param("businessmanId") int businessmanId,@Param("dishId") int dishId);
 
+    /**
+     * 批量删除菜品
+     * @param businessmanId 商户id
+     * @param ids           菜品id数组
+     * @return              删除的行数
+     */
+    int deleteMultiple(@Param("businessmanId") int businessmanId,@Param("ids") int ...ids);
 
     /**
      * 更新当前商户下的某菜品信息
@@ -44,4 +51,11 @@ public interface DishMapper {
      * @return          修改行数
      */
     int updateDish(@Param("currentId") int currentId,@Param("dish") Dish dish);
+
+    /**
+     * 插入菜品，插入成功后把主键返回给dish对象
+     * @param currentId 当前商户id
+     * @param dish      菜品信息
+     */
+    void insertDish(@Param("currentId") int currentId,@Param("dish") Dish dish);
 }
