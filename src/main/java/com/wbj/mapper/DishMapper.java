@@ -28,13 +28,13 @@ public interface DishMapper {
     @Select("select count(*) from dish where businessman_id = #{businessmanId}")
     Integer selectDishCount(int businessmanId);
 
-    /**
-     * 根据菜品id删除当前商户的菜品
-     * @param businessmanId 商户id
-     * @param dishId        菜品id
-     */
-    @Delete("delete from dish where businessman_id = #{businessmanId} and id = #{dishId}")
-    int deleteOne(@Param("businessmanId") int businessmanId,@Param("dishId") int dishId);
+//    /**
+//     * 根据菜品id删除当前商户的菜品
+//     * @param businessmanId 商户id
+//     * @param dishId        菜品id
+//     */
+//    @Delete("delete from dish where businessman_id = #{businessmanId} and id = #{dishId}")
+//    int deleteOne(@Param("businessmanId") int businessmanId,@Param("dishId") int dishId);
 
     /**
      * 批量删除菜品

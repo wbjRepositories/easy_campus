@@ -37,19 +37,19 @@ public class DishController {
         return dishService.getDishCount(businessmanId);
     }
 
-    /**
-     * 根据菜品id删除当前商户的菜品
-     * @param businessmanId 商户id
-     * @param dishId        菜品id
-     *
-     */
-    @DeleteMapping
-    public R removeDish(int businessmanId,int dishId){
-        return dishService.removeDish(businessmanId,dishId);
-    }
+//    /**
+//     * 根据菜品id删除当前商户的菜品
+//     * @param businessmanId 商户id
+//     * @param dishId        菜品id
+//     *
+//     */
+//    @DeleteMapping
+//    public R removeDish(int businessmanId,int dishId){
+//        return dishService.removeDish(businessmanId,dishId);
+//    }
 
     /**
-     * 批量删除菜品
+     * 批量删除菜品,可以删除一个或者多个
      * @param businessmanId 商户id
      * @param ids           菜品id
      * @return              影响的行数

@@ -10,8 +10,33 @@
     </select>
 
     <update id="updateUserInfo">
-        update user set
-        name = #{name},gender=#{gender},class_id=#{classId},phone=#{phone},address=#{address},birthday=#{birthday}
+        update user
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="gender != null and gender != ''">
+                gender=#{gender},
+            </if>
+            <if test="classId != null and classId != ''">
+                class_id=#{classId},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone=#{phone},
+            </if>
+            <if test="address != null and address != ''">
+                address=#{address},
+            </if>
+            <if test="birthday != null">
+                birthday=#{birthday},
+            </if>
+            <if test="avatar != null and avatar != ''">
+                avatar = #{avatar}
+            </if>
+        </set>
         where id = #{id}
     </update>
 

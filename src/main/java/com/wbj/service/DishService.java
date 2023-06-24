@@ -12,7 +12,7 @@ public interface DishService {
 
     R<Integer> getDishCount(int businessmanId);
 
-    R removeDish(int businessmanId,int dishId);
+//    R removeDish(int businessmanId,int dishId);
 
     R removeMultiple(int businessmanId,int ...dis);
 

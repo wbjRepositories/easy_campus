@@ -33,17 +33,17 @@ public class DishServiceImpl implements DishService {
         return R.success(dishMapper.selectDishCount(businessmanId),"查询菜品数成功！");
     }
 
-    @Override
-    public R removeDish(int businessmanId, int dishId) {
-        int flag = dishMapper.deleteOne(businessmanId, dishId);
-        if (flag >= 1){
-            log.info("删除菜品，当前商户id：{}  菜品id：{}",businessmanId,dishId);
-            return R.success("删除菜品成功");
-        }else {
-            return R.fail("删除菜品失败!");
-        }
-
-    }
+//    @Override
+//    public R removeDish(int businessmanId, int dishId) {
+//        int flag = dishMapper.deleteOne(businessmanId, dishId);
+//        if (flag >= 1){
+//            log.info("删除菜品，当前商户id：{}  菜品id：{}",businessmanId,dishId);
+//            return R.success("删除菜品成功");
+//        }else {
+//            return R.fail("删除菜品失败!");
+//        }
+//
+//    }
 
     @Override
     public R removeMultiple(int businessmanId, int... dis) {
