@@ -36,7 +36,7 @@ public class Dish {
     /**
      * 更新时间
      */
-    private OffsetDateTime updateTime;
+    private OffsetDateTime updateTime = OffsetDateTime.now();
     /**
      * 重量
      */

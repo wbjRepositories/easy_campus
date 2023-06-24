@@ -40,10 +40,20 @@ public class DishServiceImpl implements DishService {
             log.info("删除菜品，当前商户id：{}  菜品id：{}",businessmanId,dishId);
             return R.success("删除菜品成功");
         }else {
-            log.warn("删除菜品失败，没有这个菜品！检查商户id和菜品id是否正确！");
-            return R.fail("没有这个菜品！");
+            return R.fail("删除菜品失败!");
         }
 
+    }
+
+    @Override
+    public R updateDish(int currentId, Dish dish) {
+        log.info("更新菜品，当前商户id：{}  菜品信息：{}",currentId,dish);
+        int flag = dishMapper.updateDish(currentId, dish);
+        if (flag >=1){
+            return R.success("更新菜品成功！");
+        }else {
+            return R.fail("更新菜品失败！");
+        }
     }
 
 }

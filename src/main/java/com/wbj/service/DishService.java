@@ -12,5 +12,7 @@ public interface DishService {
 
     R<Integer> getDishCount(int businessmanId);
 
-    R<String> removeDish(int businessmanId,int dishId);
+    R removeDish(int businessmanId,int dishId);
+
+    R updateDish(int currentId,Dish dish);
 }

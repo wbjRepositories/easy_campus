@@ -1,6 +1,7 @@
 package com.wbj.controller;
 
 import com.wbj.common.R;
+import com.wbj.pojo.Dish;
 import com.wbj.service.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,5 +46,10 @@ public class DishController {
     @DeleteMapping
     public R removeDish(int businessmanId,int dishId){
         return dishService.removeDish(businessmanId,dishId);
+    }
+
+    @PutMapping
+    public R updateDish(int currentId, @RequestBody Dish dish) {
+        return dishService.updateDish(currentId,dish);
     }
 }

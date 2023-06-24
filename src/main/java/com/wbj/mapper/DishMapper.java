@@ -17,7 +17,7 @@ public interface DishMapper {
      * @param offset    偏移量
      * @return          分页菜品
      */
-    @Select("select * from dish where businessman_id=#{businessmanId} limit #{index},#{offset}")
+
     ArrayList<Dish> selectDishByPage(@Param("businessmanId") int businessmanId,@Param("index") int index, @Param("offset") int offset);
 
     /**
@@ -35,4 +35,13 @@ public interface DishMapper {
      */
     @Delete("delete from dish where businessman_id = #{businessmanId} and id = #{dishId}")
     int deleteOne(@Param("businessmanId") int businessmanId,@Param("dishId") int dishId);
+
+
+    /**
+     * 更新当前商户下的某菜品信息
+     * @param currentId 当前商户id
+     * @param dish      菜品id
+     * @return          修改行数
+     */
+    int updateDish(@Param("currentId") int currentId,@Param("dish") Dish dish);
 }
