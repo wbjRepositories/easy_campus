@@ -28,4 +28,9 @@
         insert into dish(name,price,is_preferential,weight,businessman_id,update_time,image)
         value(#{dish.name},#{dish.price},#{dish.isPreferential},#{dish.weight},#{currentId},#{dish.updateTime},#{dish.image})
     </insert>
+
+    <select id="selectDishByOrderId" resultType="dish">
+        select id,name,price,is_preferential,weight,image
+        from dish
+    </select>
 </mapper>

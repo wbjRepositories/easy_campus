@@ -28,7 +28,7 @@ public class User {
     /**
      * 班级id
      */
-    private int classId;
+    private Integer classId;
     /**
      * 创建时间
      */
@@ -36,15 +36,15 @@ public class User {
     /**
      * 性别
      */
-    private long gender;
+    private Long gender;
     /**
      * id
      */
-    private long id;
+    private Long id;
     /**
      * 是否兼职;0：未有兼职  1：已有兼职
      */
-    private long isJob;
+    private Long isJob;
     /**
      * 姓名
      */
@@ -72,5 +72,5 @@ public class User {
     /**
      * 状态;0：在校  1：事假  2：病假  3：正在审批
      */
-    private long state;
+    private Long state;
 }

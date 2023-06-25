@@ -1,7 +1,6 @@
 package com.wbj.mapper;
 
 import com.wbj.pojo.Dish;
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -58,4 +57,12 @@ public interface DishMapper {
      * @param dish      菜品信息
      */
     void insertDish(@Param("currentId") int currentId,@Param("dish") Dish dish);
+
+
+    /**
+     * 根据订单id获取菜品信息
+     * @param orderId   订单id
+     * @return          菜品信息
+     */
+    ArrayList<Dish> selectDishByOrderId(int orderId);
 }

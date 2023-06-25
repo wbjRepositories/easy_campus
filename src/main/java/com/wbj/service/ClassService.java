@@ -7,4 +7,10 @@ import java.util.ArrayList;
 
 public interface ClassService {
     R<ArrayList<Class>> getAllClass();
+
+    R addClass(Class c);
+
+    R updateClass(Class c);
+
+    R removeClass(int ...ids);
 }

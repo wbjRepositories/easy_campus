@@ -1,12 +1,8 @@
 package com.wbj.mapper;
 
 
-import com.wbj.pojo.Class;
 import com.wbj.pojo.User;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-
-import java.util.ArrayList;
 
 public interface UserMapper {
     //用户登录
@@ -14,7 +10,6 @@ public interface UserMapper {
 
 
     //查询用户个人信息
-    @Select("select * from user where id = #{userId}")
     User selectOneUser(int userId);
 
 

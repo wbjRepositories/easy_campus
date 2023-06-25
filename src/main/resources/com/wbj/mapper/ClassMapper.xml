@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wbj.mapper.ClassMapper">
+    <update id="updateClass">
+        update class
+        <set>
+            <if test="name != null and name != ''">
+                name=#{name},
+            </if>
+            <if test="classNum != null and classNum != ''">
+                class_num=#{classNum}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <delete id="deleteClassByIds">
+        delete from class
+        where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

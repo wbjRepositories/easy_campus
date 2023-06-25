@@ -9,6 +9,11 @@
         where username = #{username} and password = #{password} and role = #{role}
     </select>
 
+    <select id="selectOneUser" resultType="com.wbj.Dto.UserDto">
+        select num,username,u.name,gender,c.name as class_name,phone,address,birthday,state,is_job,avatar
+        from user u left join class c on u.class_id=c.id where u.id = #{userId}
+    </select>
+
     <update id="updateUserInfo">
         update user
         <set>
