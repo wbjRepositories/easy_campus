@@ -5,6 +5,8 @@ import com.wbj.pojo.Orders;
 
 import java.util.ArrayList;
 
-public interface OrderService {
+public interface OrdersService {
     R<ArrayList<Orders>> getUserOrders(int userId);
+
+    R addOrder(Orders orders,int ...dishId);
 }

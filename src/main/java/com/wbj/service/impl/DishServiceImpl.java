@@ -7,11 +7,13 @@ import com.wbj.service.DishService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
 @Service
 @Slf4j
+@Transactional
 public class DishServiceImpl implements DishService {
     @Autowired
     private DishMapper dishMapper;
@@ -83,6 +85,12 @@ public class DishServiceImpl implements DishService {
         dishMapper.insertDish(currentId, dish);
         System.out.println(dish.getId());
         return R.success(dish.getId(),"新增菜品成功");
+    }
+
+    @Override
+    public R<ArrayList<Dish>> getDishByOrderId(int orderId) {
+        log.info("查询订单中的菜品，订单id：{}",orderId);
+        return R.success(dishMapper.selectDishByOrderId(orderId),"查询订单菜品成功！");
     }
 
 }

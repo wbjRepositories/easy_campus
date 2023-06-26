@@ -30,7 +30,10 @@
     </insert>
 
     <select id="selectDishByOrderId" resultType="dish">
-        select id,name,price,is_preferential,weight,image
-        from dish
+        select d.id,name,price,is_preferential,weight,image
+        from dish d
+        right join order_dish od
+        on od.dish_id=d.id
+        where order_id=#{orderId}
     </select>
 </mapper>

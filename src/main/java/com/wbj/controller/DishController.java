@@ -6,6 +6,8 @@ import com.wbj.service.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/dish")
 public class DishController {
@@ -81,5 +83,15 @@ public class DishController {
     @PostMapping
     public R addDish(int currentId, @RequestBody Dish dish) {
         return dishService.addDish(currentId,dish);
+    }
+
+    /**
+     * 查询订单菜品
+     * @param orderId   订单id
+     * @return          菜品信息
+     */
+    @GetMapping("orders")
+    public R<ArrayList<Dish>> getDishByOrderId(int orderId) {
+        return dishService.getDishByOrderId(orderId);
     }
 }

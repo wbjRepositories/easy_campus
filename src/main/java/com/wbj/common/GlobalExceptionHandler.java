@@ -2,10 +2,10 @@ package com.wbj.common;
 
 import io.jsonwebtoken.MalformedJwtException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
+//@RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
     @ExceptionHandler({IllegalArgumentException.class, MalformedJwtException.class})
@@ -18,6 +18,12 @@ public class GlobalExceptionHandler {
     public R formatException(Exception e){
         log.warn("非法状态异常：{}",e.toString()+":"+e.getMessage());
         return R.fail("数据格式有误！");
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public R MethodException(Exception e){
+        log.info("不支持Http请求方法异常：{}",e.toString()+":"+e.getMessage());
+        return R.fail("Http请求方法有误！");
     }
 
 

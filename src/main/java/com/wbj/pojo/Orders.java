@@ -12,11 +12,11 @@ public class Orders {
     /**
      * 商户id
      */
-    private Long businessmanid;
+    private Long businessmanId;
     /**
      * 主键
      */
-    private Long id;
+    private Integer id;
     /**
      * 订单号
      */
@@ -37,5 +37,9 @@ public class Orders {
      * 下单用户id
      */
     private Long userId;
+    /**
+     * 收货地址id
+     */
+    private Integer shippingAddressId;
 
 }

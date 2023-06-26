@@ -7,11 +7,13 @@ import com.wbj.service.BusinessmanService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
 @Service
 @Slf4j
+@Transactional
 public class BusinessmanServiceImpl implements BusinessmanService {
     @Autowired
     BusinessmanMapper businessmanMapper;

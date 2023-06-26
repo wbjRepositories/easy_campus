@@ -19,4 +19,6 @@ public interface DishService {
     R updateDish(int currentId,Dish dish);
 
     R addDish(int currentId,Dish dish);
+
+    R<ArrayList<Dish>> getDishByOrderId(int orderId);
 }
